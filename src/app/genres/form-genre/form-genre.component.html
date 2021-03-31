@@ -1,0 +1,12 @@
+<form (submit)="saveChanges()" [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <mat-label>Nombre del Género *</mat-label>
+    <input formControlName="genreName" matInput>
+    <mat-error *ngIf="form.invalid"> {{showErrorGenreName()}} </mat-error>
+  </mat-form-field>
+
+  <div>
+    <button mat-flat-button color="primary" [disabled]="form.invalid">Guardar Cambios</button>
+    <a mat-stroked-button routerLink="/generos">Cancelar</a>
+  </div>
+</form>

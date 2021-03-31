@@ -1,0 +1,22 @@
+<div *ngIf="!genericList">
+  <span #loading>
+    <ng-content select="[loading]"></ng-content>
+  </span>
+  <span *ngIf="!loading.innerHTML.trim()">
+    <img
+      src="https://media0.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"
+      alt=""
+    />
+  </span>
+</div>
+
+<div *ngIf="genericList?.length === 0">
+  <span #empty><ng-content select="[empty]"></ng-content></span>
+  <span *ngIf="!empty.innerHTML.trim()">
+    <p>No existe información</p>
+  </span>
+</div>
+
+<ng-container *ngIf="genericList && genericList.length > 0">
+  <ng-content select="[genericContent]"></ng-content>
+</ng-container>

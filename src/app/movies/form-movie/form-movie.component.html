@@ -1,0 +1,62 @@
+<form (submit)="saveChanges()" [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <mat-label>Título*</mat-label>
+    <input formControlName="title" matInput />
+    <mat-error *ngIf="form.invalid">Este campo es requerido</mat-error>
+  </mat-form-field>
+
+  <div class="checkbox-container">
+    <mat-checkbox formControlName="moviesTheaters"
+      >Película en Cartelera</mat-checkbox
+    >
+  </div>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Trailer</mat-label>
+    <input formControlName="trailer" matInput />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Fecha de Lanzamiento</mat-label>
+    <input
+      formControlName="releaseDate"
+      matInput
+      [matDatepicker]="datePicker"
+    />
+    <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+    <mat-datepicker #datePicker></mat-datepicker>
+  </mat-form-field>
+
+  <h4>Seleccionar Poster</h4>
+  <app-upload-image
+    [urlCurrentImage]="movie?.poster"
+    (fileSelectedEvent)="fileSelected($event)"
+  ></app-upload-image>
+
+  <h4>Resumen de la Película</h4>
+  <app-input-markdown
+    (changeEvent)="changeMarkDown($event)"
+    [placeHolderTextArea]="'Resumen'"
+    [markDownContent]="movie?.resume"
+  ></app-input-markdown>
+
+  <h4>Seleccione los géneros</h4>
+  <app-multiple-selector
+    [selectedItems]="selectedGenres"
+    [catalogItems]="catalogGenres"
+  ></app-multiple-selector>
+
+  <h4>Seleccione los cines</h4>
+  <app-multiple-selector
+    [selectedItems]="selectedCinemas"
+    [catalogItems]="catalogCinemas"
+  ></app-multiple-selector>
+
+
+  <div>
+    <button mat-flat-button color="primary" [disabled]="form.invalid">
+      Guardar Cambios
+    </button>
+    <a mat-stroked-button routerLink="/">Cancelar</a>
+  </div>
+</form>

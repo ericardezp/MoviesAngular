@@ -1,1 +1,6 @@
-<p>edit-cinema works!</p>
+<h2>Editar Cine</h2>
+
+<app-form-cinema
+  [cinemaModel]="cinemaModel"
+  (saveChangesEvent)="saveChanges($event)"
+></app-form-cinema>

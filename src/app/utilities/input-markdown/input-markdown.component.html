@@ -1,0 +1,11 @@
+<mat-tab-group>
+  <mat-tab label="Editar">
+    <mat-form-field appearance="fill" (change)="changeValue($event)">
+      <mat-label>{{placeHolderTextArea}}</mat-label>
+      <textarea [(ngModel)]="markDownContent" matInput></textarea>
+    </mat-form-field>
+  </mat-tab>
+  <mat-tab label="Vista Previa">
+    <markdown [data]="markDownContent" ngPreserveWhitespace></markdown>
+  </mat-tab>
+</mat-tab-group>

@@ -2,7 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MarkdownModule } from 'ngx-markdown';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import 'leaflet/dist/images/marker-icon.png';
+import 'leaflet/dist/images/marker-shadow.png';
 
 import { AppComponent } from './app.component';
 import { MovieListComponent } from './movies/movie-list/movie-list.component';
@@ -24,6 +28,13 @@ import { EditCinemaComponent } from './cinemas/edit-cinema/edit-cinema.component
 import { EditMovieComponent } from './movies/edit-movie/edit-movie.component';
 import { FormGenreComponent } from './genres/form-genre/form-genre.component';
 import { FilterMovieComponent } from './movies/filter-movie/filter-movie.component';
+import { FormActorComponent } from './actors/form-actor/form-actor.component';
+import { UploadImageComponent } from './utilities/upload-image/upload-image.component';
+import { InputMarkdownComponent } from './utilities/input-markdown/input-markdown.component';
+import { FormCinemaComponent } from './cinemas/form-cinema/form-cinema.component';
+import { MapComponent } from './utilities/map/map.component';
+import { FormMovieComponent } from './movies/form-movie/form-movie.component';
+import { MultipleSelectorComponent } from './utilities/multiple-selector/multiple-selector.component';
 
 @NgModule({
   declarations: [
@@ -45,14 +56,24 @@ import { FilterMovieComponent } from './movies/filter-movie/filter-movie.compone
     EditCinemaComponent,
     EditMovieComponent,
     FormGenreComponent,
-    FilterMovieComponent
+    FilterMovieComponent,
+    FormActorComponent,
+    UploadImageComponent,
+    InputMarkdownComponent,
+    FormCinemaComponent,
+    MapComponent,
+    FormMovieComponent,
+    MultipleSelectorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    LeafletModule,
+    MarkdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

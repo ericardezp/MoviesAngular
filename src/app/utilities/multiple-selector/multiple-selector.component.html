@@ -1,0 +1,22 @@
+<div class="container">
+  <ul>
+    <li
+      *ngFor="let item of catalogItems; let index = index"
+      (click)="selectItem(item, index)"
+    >
+      {{ item.value }}
+    </li>
+  </ul>
+  <div class="buttons-container">
+    <button type="button" (click)="selectAll()">>></button>
+    <button type="button" (click)="unselectAll()"><<</button>
+  </div>
+  <ul>
+    <li
+      *ngFor="let item of selectedItems; let index = index"
+      (click)="unselectItem(item, index)"
+    >
+      {{ item.value }}
+    </li>
+  </ul>
+</div>

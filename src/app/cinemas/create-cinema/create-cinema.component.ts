@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CinemaCreateDTO } from '../cinema.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-cinema',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateCinemaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  saveChanges(cinema: CinemaCreateDTO): void {
+    console.log(cinema);
+    this.router.navigate(['/cines']);
+  }
 }

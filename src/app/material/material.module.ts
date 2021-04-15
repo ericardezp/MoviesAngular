@@ -10,7 +10,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTabsModule } from '@angular/material/tabs';
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatTableModule } from '@angular/material/table';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 @NgModule({
   declarations: [],
   exports: [
@@ -23,7 +25,10 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatTabsModule
+    MatTabsModule,
+    MatAutocompleteModule,
+    MatTableModule,
+    DragDropModule
   ],
   imports: [CommonModule],
 })

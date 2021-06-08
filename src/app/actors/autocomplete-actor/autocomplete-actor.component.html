@@ -23,17 +23,17 @@
   class="mat-elevation-z8"
   cdkDropList
 >
-  <ng-container matColumnDef="photo">
-    <th mat-header-cell *matHeaderCellDef>No.</th>
-    <td mat-cell *matCellDef="let element">
-      <img style="width: 35px" [src]="element.photo" />
-    </td>
-  </ng-container>
-
   <ng-container matColumnDef="actorName">
     <th mat-header-cell *matHeaderCellDef>Nombre</th>
     <td mat-cell *matCellDef="let element">
       {{ element.actorName }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="photo">
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <td mat-cell *matCellDef="let element">
+      <img style="width: 35px" [src]="element.photo" />
     </td>
   </ng-container>
 

@@ -16,6 +16,7 @@ export class FormGenreComponent implements OnInit {
 
   @Input() genreModel: GenreModelDTO;
 
+  @Input() errors: string[] = [];
 
   @Output() saveChangesEvent: EventEmitter<GenreModelDTO> = new EventEmitter<GenreModelDTO>();
 
@@ -24,6 +25,7 @@ export class FormGenreComponent implements OnInit {
       genreName: [
         '',
         {
+          // validators: [Validators.required, Validators.minLength(3)]
           validators: [Validators.required, Validators.minLength(3), firstLetterUppercase()]
         },
       ],

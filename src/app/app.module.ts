@@ -38,6 +38,7 @@ import { MapComponent } from './utilities/map/map.component';
 import { FormMovieComponent } from './movies/form-movie/form-movie.component';
 import { MultipleSelectorComponent } from './utilities/multiple-selector/multiple-selector.component';
 import { AutocompleteActorComponent } from './actors/autocomplete-actor/autocomplete-actor.component';
+import { ShowErrorsComponent } from './utilities/show-errors/show-errors.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { AutocompleteActorComponent } from './actors/autocomplete-actor/autocomp
     FormMovieComponent,
     MultipleSelectorComponent,
     AutocompleteActorComponent,
+    ShowErrorsComponent,
   ],
   imports: [
     BrowserModule,

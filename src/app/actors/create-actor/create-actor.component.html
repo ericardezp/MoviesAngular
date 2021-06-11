@@ -1,3 +1,5 @@
 <h2>Crear Actor</h2>
 
-<app-form-actor (saveChangesEvent)="saveChanges($event)"></app-form-actor>
+<app-form-actor
+[errors]="errors"
+(saveChangesEvent)="saveChanges($event)"></app-form-actor>

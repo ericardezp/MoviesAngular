@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { GenreIndexComponent } from './genre-index/genre-index.component';
+import { GenreIndexComponent } from './genres/genre-index/genre-index.component';
 import { CreateGenreComponent } from './genres/create-genre/create-genre.component';
 import { IndexActorComponent } from './actors/index-actor/index-actor.component';
 import { CreateActorComponent } from './actors/create-actor/create-actor.component';

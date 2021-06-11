@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActorCreateDTO } from '../actor.model';
 import { Router } from '@angular/router';
+import { ActorsService } from '../actors.service';
+import { parserErrors } from '../../utilities/helpers';
 
 @Component({
   selector: 'app-create-actor',
@@ -8,14 +10,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-actor.component.css']
 })
 export class CreateActorComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  errors: string[] = [];
+  constructor(private router: Router, private actorsService: ActorsService) { }
 
   ngOnInit(): void {
   }
 
-  saveChanges(actor: ActorCreateDTO): void {
-    console.log(actor);
-    this.router.navigate(['/actores']);
+  saveChanges(ActorCreateDto: ActorCreateDTO): void {
+    this.actorsService.AddActor(ActorCreateDto)
+    .subscribe(() => {
+      this.router.navigate(['/actores']);
+    },
+    (error) => this.errors = parserErrors(error)
+    );
   }
 }

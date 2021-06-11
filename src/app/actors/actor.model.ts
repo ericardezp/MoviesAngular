@@ -8,4 +8,5 @@ export interface ActorCreateDTO {
   actorName: string;
   dateBirth: Date;
   photo: File;
+  biography: string;
 }

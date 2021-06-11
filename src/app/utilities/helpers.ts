@@ -26,3 +26,19 @@ export function parserErrors(response: any): string[] {
   }
   return result;
 }
+
+export function dateFormatter(date: Date): string {
+  const dateFormat = new Intl.DateTimeFormat('en', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  });
+
+  const [
+    {value: month}, ,
+    {value: day}, ,
+    {value: year}
+  ] = dateFormat.formatToParts(date);
+
+  return `${year}-${month}-${day}`;
+}

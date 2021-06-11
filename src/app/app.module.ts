@@ -9,6 +9,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import 'leaflet/dist/images/marker-icon.png';
 import 'leaflet/dist/images/marker-shadow.png';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { AppComponent } from './app.component';
 import { MovieListComponent } from './movies/movie-list/movie-list.component';
@@ -17,7 +18,7 @@ import { MaterialModule } from './material/material.module';
 import { MenuComponent } from './menu/menu.component';
 import { RatingComponent } from './utilities/rating/rating.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { GenreIndexComponent } from './genre-index/genre-index.component';
+import { GenreIndexComponent } from './genres/genre-index/genre-index.component';
 import { CreateGenreComponent } from './genres/create-genre/create-genre.component';
 import { IndexActorComponent } from './actors/index-actor/index-actor.component';
 import { CreateActorComponent } from './actors/create-actor/create-actor.component';
@@ -69,7 +70,7 @@ import { ShowErrorsComponent } from './utilities/show-errors/show-errors.compone
     FormMovieComponent,
     MultipleSelectorComponent,
     AutocompleteActorComponent,
-    ShowErrorsComponent,
+    ShowErrorsComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +81,8 @@ import { ShowErrorsComponent } from './utilities/show-errors/show-errors.compone
     FormsModule,
     LeafletModule,
     HttpClientModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    SweetAlert2Module.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

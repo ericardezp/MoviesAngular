@@ -15,6 +15,8 @@ export class FormActorComponent implements OnInit {
 
   @Input() actorModel: ActorModelDTO;
 
+  @Input() errors: string[] = [];
+
   @Output() saveChangesEvent: EventEmitter<ActorCreateDTO> = new EventEmitter<ActorCreateDTO>();
 
   ngOnInit(): void {

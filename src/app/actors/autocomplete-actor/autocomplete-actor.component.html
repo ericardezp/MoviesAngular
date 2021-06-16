@@ -9,16 +9,16 @@
     />
   </mat-form-field>
   <mat-autocomplete #autoComplete (optionSelected)="optionSelected($event)">
-    <mat-option *ngFor="let item of catalogActors" [value]="item">
+    <mat-option *ngFor="let item of actorsToShow" [value]="item">
       <img [src]="item.photo" /> {{ item.actorName }}
     </mat-option>
   </mat-autocomplete>
 </form>
 <table
   (cdkDropListDropped)="dragDropRow($event)"
-  [dataSource]="selectedActors"
-  [cdkDropListData]="selectedActors"
-  *ngIf="selectedActors.length > 0"
+  [dataSource]="actorsSelected"
+  [cdkDropListData]="actorsSelected"
+  *ngIf="actorsSelected.length > 0"
   mat-table
   class="mat-elevation-z8"
   cdkDropList

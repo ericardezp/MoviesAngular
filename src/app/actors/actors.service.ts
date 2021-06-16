@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { ActorCreateDTO } from './actor.model';
+import { ActorModelDto, ActorDto, ActorMovieDto } from './actor.model';
 import { dateFormatter } from '../utilities/helpers';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +13,37 @@ export class ActorsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public AddActor(actorCreateDto: ActorCreateDTO) {
+  public GetActors(currentPage: number, recordsPage: number): Observable<any> {
+    let httpParams = new HttpParams();
+    httpParams = httpParams.append('CurrentPage', currentPage.toString());
+    httpParams = httpParams.append('recordsPerPage', recordsPage.toString());
+    return this.httpClient.get<ActorDto[]>(this.apiUrl, {observe: 'response', params: httpParams });
+  }
+
+  public GetActorById(id: number): Observable<ActorDto> {
+    return this.httpClient.get<ActorDto>(`${this.apiUrl}/${id}`);
+  }
+
+  public GetActorByName(actorName: string): Observable<ActorMovieDto[]> {
+    const headers = new HttpHeaders('Content-Type: application/json');
+    return this.httpClient.post<ActorMovieDto[]>(`${this.apiUrl}/searchByName`, JSON.stringify(actorName), {headers});
+  }
+
+  public AddActor(actorCreateDto: ActorModelDto): Observable<object> {
     const formData = this.formDataBuilder(actorCreateDto);
     return this.httpClient.post(this.apiUrl, formData);
   }
 
-  private formDataBuilder(actorCreateDto: ActorCreateDTO): FormData {
+  public UpdateActor(id: number, actorModel: ActorModelDto): Observable<object> {
+    const formData = this.formDataBuilder(actorModel);
+    return this.httpClient.put(`${this.apiUrl}/${id}`, formData);
+  }
+
+  public DeleteActor(id: number): Observable<object> {
+    return this.httpClient.delete(`${this.apiUrl}/${id}`);
+  }
+
+  private formDataBuilder(actorCreateDto: ActorModelDto): FormData {
     const formData = new FormData();
     formData.append('actorName', actorCreateDto.actorName);
     if (actorCreateDto.biography) {

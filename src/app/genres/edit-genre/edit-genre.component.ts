@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GenreDto, GenreModelDTO } from '../genre.model';
+import { GenreDto, GenreModelDto } from '../genre.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { GenresService } from '../genres.service';
 import { parserErrors } from 'src/app/utilities/helpers';
@@ -30,7 +30,7 @@ export class EditGenreComponent implements OnInit {
     });
   }
 
-  saveChanges(genreDto: GenreModelDTO): void {
+  saveChanges(genreDto: GenreModelDto): void {
     this.genresService.UpdateGenre(this.genreModel.id, genreDto).subscribe(
       () => {
         this.router.navigate(['/generos']);

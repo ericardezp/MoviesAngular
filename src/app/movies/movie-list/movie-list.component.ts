@@ -9,7 +9,7 @@ export class MovieListComponent implements OnInit {
   constructor() { }
   @Input() movies;
 
-  ngOnInit(): void { }
+  ngOnInit(): void {  }
 
   removeMovie(movieIndex: number): void {
     this.movies.splice(movieIndex, 1);

@@ -1,6 +1,6 @@
-<div
-  (leafletClick)="handlerClick($event)"
+<div #map
   leaflet
   [leafletOptions]="options"
+  (leafletClick)="handlerClick($event)"
   [leafletLayers]="layers"
 ></div>

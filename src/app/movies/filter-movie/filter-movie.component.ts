@@ -28,7 +28,7 @@ export class FilterMovieComponent implements OnInit {
       title: 'My Name Is Khan',
       releaseDate: new Date(2010, 1, 10),
       price: 1350.99,
-      image:
+      poster:
         'https://m.media-amazon.com/images/M/MV5BMTUyMTA4NDYzMV5BMl5BanBnXkFtZTcwMjk5MzcxMw@@._V1_UX182_CR0,0,182,268_AL_.jpg',
       genreId: [2, 3],
       moviesTheaters: false,
@@ -38,7 +38,7 @@ export class FilterMovieComponent implements OnInit {
       title: 'Searching',
       releaseDate: new Date(2018, 7, 31),
       price: 1350.99,
-      image:
+      poster:
         'https://m.media-amazon.com/images/M/MV5BMjIwOTA3NDI3MF5BMl5BanBnXkFtZTgwNzIzMzA5NTM@._V1_UX182_CR0,0,182,268_AL_.jpg',
       genreId: [2, 4],
       moviesTheaters: false,
@@ -48,7 +48,7 @@ export class FilterMovieComponent implements OnInit {
       title: 'Spider-Man Far From Home',
       releaseDate: new Date(2019, 6, 2),
       price: 1350.99,
-      image:
+      poster:
         'https://m.media-amazon.com/images/M/MV5BMGZlNTY1ZWUtYTMzNC00ZjUyLWE0MjQtMTMxN2E3ODYxMWVmXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_UX182_CR0,0,182,268_AL_.jpg',
       genreId: [1],
       moviesTheaters: true,
@@ -58,7 +58,7 @@ export class FilterMovieComponent implements OnInit {
       title: 'The Others',
       releaseDate: new Date(2001, 7, 10),
       price: 1350.99,
-      image:
+      poster:
         'https://m.media-amazon.com/images/M/MV5BMTAxMDE4Mzc3ODNeQTJeQWpwZ15BbWU4MDY2Mjg4MDcx._V1_UY268_CR0,0,182,268_AL_.jpg',
       genreId: [4],
       moviesTheaters: true,

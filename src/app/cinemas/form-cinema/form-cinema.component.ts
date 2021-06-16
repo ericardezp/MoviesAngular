@@ -12,6 +12,8 @@ export class FormCinemaComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) { }
 
+  @Input() errors: string[] = [];
+
   @Input() cinemaModel: CinemaCreateDTO;
 
   @Output() saveChangesEvent: EventEmitter<CinemaCreateDTO> = new EventEmitter<CinemaCreateDTO>();
@@ -35,7 +37,10 @@ export class FormCinemaComponent implements OnInit {
 
     if (this.cinemaModel !== undefined) {
       this.form.patchValue(this.cinemaModel);
-      this.initialCoordinate.push({latitude: this.cinemaModel.latitude, longitude: this.cinemaModel.longitude});
+      this.initialCoordinate.push({
+        latitude: this.cinemaModel.latitude,
+        longitude: this.cinemaModel.longitude
+      });
     }
   }
 

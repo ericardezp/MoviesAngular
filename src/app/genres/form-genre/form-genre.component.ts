@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { firstLetterUppercase } from 'src/app/validators/firstLetterUppercase';
-import { GenreModelDTO } from '../genre.model';
+import { GenreModelDto } from '../genre.model';
 
 @Component({
   selector: 'app-form-genre',
@@ -14,11 +14,11 @@ export class FormGenreComponent implements OnInit {
 
   form: FormGroup;
 
-  @Input() genreModel: GenreModelDTO;
+  @Input() genreModel: GenreModelDto;
 
   @Input() errors: string[] = [];
 
-  @Output() saveChangesEvent: EventEmitter<GenreModelDTO> = new EventEmitter<GenreModelDTO>();
+  @Output() saveChangesEvent: EventEmitter<GenreModelDto> = new EventEmitter<GenreModelDto>();
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({

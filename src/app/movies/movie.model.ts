@@ -1,3 +1,6 @@
+import { GenreDto } from '../genres/genre.model';
+import { CinemaModelDTO } from '../cinemas/cinema.model';
+import { ActorDto, ActorMovieDto } from '../actors/actor.model';
 export interface MovieModelDTO {
   title: string;
   resume: string;
@@ -5,6 +8,9 @@ export interface MovieModelDTO {
   trailer: string;
   releaseDate: Date;
   poster: string;
+  genres: GenreDto[];
+  actors: ActorMovieDto[];
+  cinemas: CinemaModelDTO[];
 }
 
 export interface MovieCreateDTO {
@@ -14,4 +20,17 @@ export interface MovieCreateDTO {
   trailer: string;
   releaseDate: Date;
   poster: File;
+  genresIds: number[];
+  cinemasIds: number[];
+  actors: ActorMovieDto[];
+}
+
+export interface MovieCinemaGenre {
+  genres: GenreDto[];
+  cinemas: CinemaModelDTO[];
+}
+
+export interface LandingPageDto {
+  moviesTheaters: MovieModelDTO[];
+  comingSoon: MovieModelDTO[];
 }

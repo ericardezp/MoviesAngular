@@ -3,19 +3,28 @@
 <form (submit)="saveChanges()" [formGroup]="form">
   <mat-form-field appearance="outline">
     <mat-label>Nombre del Actor*</mat-label>
-    <input formControlName="actorName" matInput>
+    <input formControlName="actorName" matInput />
     <mat-error *ngIf="form.invalid">Este campo es requerido</mat-error>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Fecha de Nacimiento</mat-label>
-    <input formControlName="dateBirth" matInput [matDatepicker]="dateBirth">
+    <input formControlName="dateBirth" matInput [matDatepicker]="dateBirth" />
     <mat-datepicker-toggle matSuffix [for]="dateBirth"></mat-datepicker-toggle>
     <mat-datepicker #dateBirth></mat-datepicker>
   </mat-form-field>
-  <app-upload-image [urlCurrentImage]="actorModel?.photo" (fileSelectedEvent)="fileSelected($event)"></app-upload-image>
-  <app-input-markdown [placeHolderTextArea]="'Biografía'" (changeEvent)="changeMarkDown($event)"></app-input-markdown>
+  <app-upload-image
+    [urlCurrentImage]="actorModel?.photo"
+    (fileSelectedEvent)="fileSelected($event)"
+  ></app-upload-image>
+  <app-input-markdown
+  [markDownContent]="actorModel?.biography"
+    [placeHolderTextArea]="'Biografía'"
+    (changeEvent)="changeMarkDown($event)"
+  ></app-input-markdown>
   <div>
-    <button mat-flat-button color="primary" [disabled]="form.invalid">Guardar Cambios</button>
+    <button mat-flat-button color="primary" [disabled]="form.invalid">
+      Guardar Cambios
+    </button>
     <a mat-stroked-button routerLink="/actores">Cancelar</a>
   </div>
 </form>

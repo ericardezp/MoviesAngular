@@ -40,6 +40,7 @@ import { FormMovieComponent } from './movies/form-movie/form-movie.component';
 import { MultipleSelectorComponent } from './utilities/multiple-selector/multiple-selector.component';
 import { AutocompleteActorComponent } from './actors/autocomplete-actor/autocomplete-actor.component';
 import { ShowErrorsComponent } from './utilities/show-errors/show-errors.component';
+import { DetailsMovieComponent } from './movies/details-movie/details-movie.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { ShowErrorsComponent } from './utilities/show-errors/show-errors.compone
     FormMovieComponent,
     MultipleSelectorComponent,
     AutocompleteActorComponent,
-    ShowErrorsComponent
+    ShowErrorsComponent,
+    DetailsMovieComponent
   ],
   imports: [
     BrowserModule,

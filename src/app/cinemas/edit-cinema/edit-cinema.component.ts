@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { parserErrors } from 'src/app/utilities/helpers';
 import { CinemaCreateDTO, CinemaModelDTO } from '../cinema.model';
+import { CinemasService } from '../cinemas.service';
 
 @Component({
   selector: 'app-edit-cinema',
@@ -8,15 +11,34 @@ import { CinemaCreateDTO, CinemaModelDTO } from '../cinema.model';
 })
 export class EditCinemaComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private cinemasService: CinemasService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
-  cinemaModel: CinemaModelDTO = {cinemaName: 'Apodaca Cinema', latitude: 25.780665039465145, longitude: -100.10591983795167};
+  cinemaModel: CinemaModelDTO;
+  errors: string[] = [];
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe((params) => {
+      this.cinemasService.GetCinemaById(params.id).subscribe(
+        (cinemaDto) => {
+          this.cinemaModel = cinemaDto;
+        },
+        () => this.router.navigate(['/cines'])
+      );
+    });
   }
 
-  saveChanges(cinema: CinemaCreateDTO): void {
-    console.log(cinema);
+  saveChanges(cinemaDto: CinemaCreateDTO): void {
+    this.cinemasService.UpdateCinema(this.cinemaModel.id, cinemaDto).subscribe(
+      () => {
+        this.router.navigate(['/cines']);
+      },
+      (error) => {
+        this.errors = parserErrors(error);
+      }
+    );
   }
-
 }

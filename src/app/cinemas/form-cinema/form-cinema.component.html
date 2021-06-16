@@ -1,18 +1,24 @@
+<app-show-errors [errors]="errors"></app-show-errors>
+
 <form (ngSubmit)="saveChanges()" [formGroup]="form">
   <mat-form-field appearance="outline">
     <mat-label>Nombre del Cine*</mat-label>
-    <input formControlName="cinemaName" matInput>
+    <input formControlName="cinemaName" matInput />
     <mat-error *ngIf="form.invalid">Este campo es requerido</mat-error>
   </mat-form-field>
 
   <h4>Seleccione la ubicación del cine en el mapa</h4>
-  <div>
-    <app-map (selectedCoordinateEvent)="selectedCoordinate($event)" [initialCoodinates]="initialCoordinate"></app-map>
+  <div style="position: relative;">
+    <app-map
+      (selectedCoordinateEvent)="selectedCoordinate($event)"
+      [initialCoodinates]="initialCoordinate"
+    ></app-map>
   </div>
 
-  <div>
-    <button mat-flat-button color="primary" [disabled]="form.invalid">Guardar Cambios</button>
+  <div style="margin-top: 650px;">
+    <button mat-flat-button color="primary" [disabled]="form.invalid">
+      Guardar Cambios
+    </button>
     <a mat-stroked-button routerLink="/cinemas">Cancelar</a>
   </div>
-
 </form>

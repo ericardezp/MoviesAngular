@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActorCreateDTO } from '../actor.model';
+import { ActorModelDto } from '../actor.model';
 import { Router } from '@angular/router';
 import { ActorsService } from '../actors.service';
 import { parserErrors } from '../../utilities/helpers';
@@ -16,7 +16,7 @@ export class CreateActorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  saveChanges(ActorCreateDto: ActorCreateDTO): void {
+  saveChanges(ActorCreateDto: ActorModelDto): void {
     this.actorsService.AddActor(ActorCreateDto)
     .subscribe(() => {
       this.router.navigate(['/actores']);

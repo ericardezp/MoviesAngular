@@ -1,6 +1,10 @@
 <h2>Editar Cine</h2>
 
 <app-form-cinema
+  *ngIf="cinemaModel"
   [cinemaModel]="cinemaModel"
+  [errors]="errors"
   (saveChangesEvent)="saveChanges($event)"
 ></app-form-cinema>
+
+<mat-spinner *ngIf="!cinemaModel"></mat-spinner>

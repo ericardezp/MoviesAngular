@@ -1,3 +1,5 @@
+<app-show-errors [errors]="errors"></app-show-errors>
+
 <form (submit)="saveChanges()" [formGroup]="form">
   <mat-form-field appearance="outline">
     <mat-label>Título*</mat-label>
@@ -42,18 +44,20 @@
 
   <h4>Seleccione los géneros</h4>
   <app-multiple-selector
-    [selectedItems]="selectedGenres"
-    [catalogItems]="catalogGenres"
+    [selectedItems]="genresSelected"
+    [catalogItems]="genresNotSelected"
   ></app-multiple-selector>
 
   <h4>Seleccione los cines</h4>
   <app-multiple-selector
-    [selectedItems]="selectedCinemas"
-    [catalogItems]="catalogCinemas"
+    [selectedItems]="cinemasSelected"
+    [catalogItems]="cinemasNotSelected"
   ></app-multiple-selector>
 
   <h4>Seleccione los actores</h4>
-  <app-autocomplete-actor></app-autocomplete-actor>
+  <app-autocomplete-actor
+  [actorsSelected]="actorsSelected"
+  ></app-autocomplete-actor>
 
   <div>
     <button mat-flat-button color="primary" [disabled]="form.invalid">

@@ -28,6 +28,7 @@ export function parserErrors(response: any): string[] {
 }
 
 export function dateFormatter(date: Date): string {
+  date = new Date(date);
   const dateFormat = new Intl.DateTimeFormat('en', {
     year: 'numeric',
     month: '2-digit',

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ActorCreateDTO, ActorModelDTO } from '../actor.model';
+import { parserErrors } from 'src/app/utilities/helpers';
+import { ActorModelDto, ActorDto } from '../actor.model';
+import { ActorsService } from '../actors.service';
 
 @Component({
   selector: 'app-edit-actor',
@@ -8,20 +10,34 @@ import { ActorCreateDTO, ActorModelDTO } from '../actor.model';
   styleUrls: ['./edit-actor.component.css'],
 })
 export class EditActorComponent implements OnInit {
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
-  actorModel: ActorModelDTO = {
-    actorName: 'Tom Cruise',
-    dateBirth: new Date(1962, 6, 3),
-    photo: 'https://m.media-amazon.com/images/M/MV5BMTk1MjM3NTU5M15BMl5BanBnXkFtZTcwMTMyMjAyMg@@._V1_UY317_CR14,0,214,317_AL_.jpg'
-  };
+  constructor(
+    private router: Router,
+    private actorsService: ActorsService,
+    private activatedRoute: ActivatedRoute
+  ) {}
+
+  actorModel: ActorDto;
+  errors: string[] = [];
+
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      console.log(params.id);
+      this.actorsService.GetActorById(params.id).subscribe(
+        (actorDto) => {
+          this.actorModel = actorDto;
+        },
+        () => this.router.navigate(['/generos'])
+      );
     });
   }
 
-  saveChanges(actor: ActorCreateDTO): void {
-    console.log(actor);
-    this.router.navigate(['/actores']);
+  saveChanges(actorDto: ActorModelDto): void {
+    this.actorsService.UpdateActor(this.actorModel.id, actorDto).subscribe(
+      () => {
+        this.router.navigate(['/actores']);
+      },
+      (error) => {
+        this.errors = parserErrors(error);
+      }
+    );
   }
 }

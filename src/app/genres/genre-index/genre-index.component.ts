@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GenresService } from '../genres.service';
 import { GenreDto } from '../genre.model';
 import { HttpResponse } from '@angular/common/http';
 import { PageEvent } from '@angular/material/paginator';
+import { MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'app-genre-index',
@@ -11,6 +12,9 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class GenreIndexComponent implements OnInit {
   constructor(private genresService: GenresService) {}
+
+  @ViewChild('table')
+  table: MatTable<any>;
 
   genres: GenreDto[];
   columnsToShow = ['id', 'genreName', 'actions'];

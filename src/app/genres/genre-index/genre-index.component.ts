@@ -27,7 +27,7 @@ export class GenreIndexComponent implements OnInit {
   }
 
   getGenreRecords(currentPage: number, recordsPage: number): void {
-    this.genresService.GetGenres(currentPage, recordsPage).subscribe(
+    this.genresService.GetPaginate(currentPage, recordsPage).subscribe(
       (response: HttpResponse<GenreDto[]>) => {
         this.genres = response.body;
         console.log(response.headers.get('totalRecords'));

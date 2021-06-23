@@ -41,6 +41,10 @@ import { MultipleSelectorComponent } from './utilities/multiple-selector/multipl
 import { AutocompleteActorComponent } from './actors/autocomplete-actor/autocomplete-actor.component';
 import { ShowErrorsComponent } from './utilities/show-errors/show-errors.component';
 import { DetailsMovieComponent } from './movies/details-movie/details-movie.component';
+import { AuthorizationComponent } from './security/authorization/authorization.component';
+import { LoginComponent } from './security/login/login.component';
+import { RegisterComponent } from './security/register/register.component';
+import { FormAuthenticationComponent } from './security/form-authentication/form-authentication.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +76,11 @@ import { DetailsMovieComponent } from './movies/details-movie/details-movie.comp
     MultipleSelectorComponent,
     AutocompleteActorComponent,
     ShowErrorsComponent,
-    DetailsMovieComponent
+    DetailsMovieComponent,
+    AuthorizationComponent,
+    LoginComponent,
+    RegisterComponent,
+    FormAuthenticationComponent
   ],
   imports: [
     BrowserModule,

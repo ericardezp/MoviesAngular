@@ -12,11 +12,15 @@ export class GenresService {
 
   private apiUrl = environment.apiUrl + 'genres';
 
-  public GetGenres(currentPage: number, recordsPage: number): Observable<any> {
+  public GetGenres(): Observable<GenreDto[]>{
+    return this.httpClient.get<GenreDto[]>(this.apiUrl);
+  }
+
+  public GetPaginate(currentPage: number, recordsPage: number): Observable<any> {
     let httpParams = new HttpParams();
     httpParams = httpParams.append('CurrentPage', currentPage.toString());
     httpParams = httpParams.append('recordsPerPage', recordsPage.toString());
-    return this.httpClient.get<GenreDto[]>(this.apiUrl, {observe: 'response', params: httpParams });
+    return this.httpClient.get<GenreDto[]>(`${this.apiUrl}/GetPaginate`, {observe: 'response', params: httpParams });
   }
 
   public GetGenreById(id: number): Observable<GenreDto> {

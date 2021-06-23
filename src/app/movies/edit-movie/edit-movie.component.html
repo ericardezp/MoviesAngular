@@ -1,3 +1,14 @@
 <h2>Editar Película</h2>
 
-<app-form-movie [movie]="movie" (saveChangesEvent)="saveChanges($event)"></app-form-movie>
+<app-form-movie
+  [genresSelected]="genresSelected"
+  [genresNotSelected]="genresNotSelected"
+  [cinemasSelected]="cinemasSelected"
+  [cinemasNotSelected]="cinemasNotSelected"
+  [actorsSelected]="actorsSelected"
+  *ngIf="movie"
+  [movie]="movie"
+  (saveChangesEvent)="saveChanges($event)"
+></app-form-movie>
+
+<mat-spinner *ngIf="!movie"></mat-spinner>

@@ -5,9 +5,31 @@
     </a>
   </span>
 
-  <div><a mat-button routerLink="peliculas/buscar"><mat-icon>search</mat-icon> Buscar Películas</a></div>
-  <div><a mat-button routerLink="generos">Géneros</a></div>
-  <div><a mat-button routerLink="actores">Actores</a></div>
-  <div><a mat-button routerLink="cines">Cines</a></div>
-  <div><a mat-button routerLink="peliculas/crear">Crear Película</a></div>
+  <div>
+    <a mat-button routerLink="peliculas/buscar"
+      ><mat-icon>search</mat-icon> Buscar Películas</a
+    >
+  </div>
+
+  <app-authorization [role]="'Administrator'">
+    <ng-container authorized>
+      <div><a mat-button routerLink="generos">Géneros</a></div>
+      <div><a mat-button routerLink="actores">Actores</a></div>
+      <div><a mat-button routerLink="cines">Cines</a></div>
+      <div><a mat-button routerLink="peliculas/crear">Crear Película</a></div>
+    </ng-container>
+  </app-authorization>
+
+  <div class="space"></div>
+
+  <app-authorization>
+    <ng-container authorized>
+      <span>Hola, </span>
+      <a mat-button>Cerrar Sesión</a>
+    </ng-container>
+    <ng-container unauthorized>
+      <a mat-button routerLink="login">Iniciar Sesión</a>
+      <a mat-button routerLink="register">Nuevo Usuario</a>
+    </ng-container>
+  </app-authorization>
 </mat-toolbar>

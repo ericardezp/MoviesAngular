@@ -3,6 +3,7 @@ import { MovieCreateDTO } from '../movie.model';
 import { MoviesService } from '../movies.service';
 import { MultipleSelectorModel } from '../../utilities/multiple-selector/multiple-selector.model';
 import { parserErrors } from '../../utilities/helpers';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-movie',
@@ -10,7 +11,7 @@ import { parserErrors } from '../../utilities/helpers';
   styleUrls: ['./create-movie.component.css'],
 })
 export class CreateMovieComponent implements OnInit {
-  constructor(private moviesService: MoviesService) {}
+  constructor(private moviesService: MoviesService, private router: Router) {}
 
   errors: string[] = [];
   genresNotSelected: MultipleSelectorModel[];
@@ -36,7 +37,7 @@ export class CreateMovieComponent implements OnInit {
 
   saveChanges(movie: MovieCreateDTO): void {
     this.moviesService.AddMovie(movie)
-    .subscribe(() => console.log('Successfull'),
+    .subscribe((movieId: number) => this.router.navigate(['/peliculas/' + movieId]),
     error => this.errors = parserErrors(error));
   }
 }

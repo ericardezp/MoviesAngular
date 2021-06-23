@@ -13,14 +13,15 @@ export class FormMovieComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   form: FormGroup;
-  genresSelected: MultipleSelectorModel[] = [];
-  cinemasSelected: MultipleSelectorModel[] = [];
 
   @Input() errors: string[] = [];
   @Input() movie: MovieModelDTO;
+  @Input() genresSelected: MultipleSelectorModel[] = [];
   @Input() genresNotSelected: MultipleSelectorModel[];
+  @Input() cinemasSelected: MultipleSelectorModel[] = [];
   @Input() cinemasNotSelected: MultipleSelectorModel[];
   @Input() actorsSelected: ActorMovieDto[] = [];
+  isChangedImage = false;
 
   @Output() saveChangesEvent: EventEmitter<MovieCreateDTO> = new EventEmitter<MovieCreateDTO>();
 
@@ -49,6 +50,7 @@ export class FormMovieComponent implements OnInit {
 
   fileSelected(file: File): void {
     this.form.get('poster').setValue(file);
+    this.isChangedImage = true;
   }
 
   changeMarkDown(textValue: string): void {
@@ -66,6 +68,10 @@ export class FormMovieComponent implements OnInit {
       return { id: val.id, character: val.character };
     });
     this.form.get('actors').setValue(actors);
+
+    if (!this.isChangedImage) {
+      this.form.patchValue({poster: null});
+    }
 
     this.saveChangesEvent.emit(this.form.value);
   }

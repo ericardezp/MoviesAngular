@@ -9,16 +9,21 @@ import { MovieModelDTO } from '../movies/movie.model';
 })
 export class LandingPageComponent implements OnInit {
   constructor(private moviesService: MoviesService) {}
+  moviesTheaters: MovieModelDTO[];
+  comingSoon: MovieModelDTO[];
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData(): void {
     this.moviesService.GetLandingPage().subscribe(landingPage => {
-      console.log(landingPage);
       this.moviesTheaters = landingPage.moviesTheaters;
       this.comingSoon = landingPage.comingSoon;
     });
   }
-  moviesTheaters: MovieModelDTO[];
-  comingSoon: MovieModelDTO[];
 
-  title = 'Hola mundo de Angular';
+  eventDeleted(): void{
+    this.loadData();
+  }
 }

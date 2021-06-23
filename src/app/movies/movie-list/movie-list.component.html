@@ -5,16 +5,38 @@
         *ngFor="let movie of movies; let index = index"
         class="movie-container"
       >
-        <a>
+        <a [routerLink]="'/peliculas/' + movie.id">
           <img [src]="movie.poster" alt="Image" />
         </a>
         <p>
-          <a> {{ movie.title }} </a>
+          <a [routerLink]="'/peliculas/' + movie.id"> {{ movie.title }} </a>
         </p>
-        <div>
-          <a mat-flat-button color="primary">Editar</a>
-          <button mat-flat-button color="warn" type="button">Borrar</button>
-        </div>
+
+        <app-authorization [role]="'Administrator'">
+          <ng-container authorized>
+            <div>
+              <a
+                [routerLink]="'/peliculas/editar/' + movie.id"
+                mat-flat-button
+                color="primary"
+                >Editar</a
+              >
+              <button
+                mat-flat-button
+                color="warn"
+                type="button"
+                [swal]="{
+                  title: 'Confirmación',
+                  text: '¿Está seguro de querer eliminar el registro?',
+                  showCancelButton: true
+                }"
+                (confirm)="deleteMovie(movie.id)"
+              >
+                Borrar
+              </button>
+            </div>
+          </ng-container>
+        </app-authorization>
       </div>
     </div>
   </ng-container>

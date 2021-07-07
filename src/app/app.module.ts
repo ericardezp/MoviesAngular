@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -45,6 +45,8 @@ import { AuthorizationComponent } from './security/authorization/authorization.c
 import { LoginComponent } from './security/login/login.component';
 import { RegisterComponent } from './security/register/register.component';
 import { FormAuthenticationComponent } from './security/form-authentication/form-authentication.component';
+import { SecurityInterceptorService } from './security/security-interceptor.service';
+import { IndexUserComponent } from './security/index-user/index-user.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +82,8 @@ import { FormAuthenticationComponent } from './security/form-authentication/form
     AuthorizationComponent,
     LoginComponent,
     RegisterComponent,
-    FormAuthenticationComponent
+    FormAuthenticationComponent,
+    IndexUserComponent
   ],
   imports: [
     BrowserModule,
@@ -94,7 +97,11 @@ import { FormAuthenticationComponent } from './security/form-authentication/form
     MarkdownModule.forRoot(),
     SweetAlert2Module.forRoot()
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: SecurityInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

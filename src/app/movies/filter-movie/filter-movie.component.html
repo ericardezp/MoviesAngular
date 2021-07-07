@@ -11,12 +11,10 @@
   <mat-form-field appearance="outline">
     <mat-label>Género</mat-label>
     <mat-select formControlName="genreId">
-      <!-- <mat-option [value]="0">--Seleccione un Género--</mat-option> -->
-      <mat-option *ngFor="let genre of listGenre" [value]="genre.genreId">{{
-        genre.genreName
-      }}</mat-option>
+        <mat-option [value]="0">--Seleccione un genero--</mat-option>
+       <mat-option *ngFor="let genre of listGenre" [value]="genre.id">{{genre.genreName}}</mat-option>
     </mat-select>
-  </mat-form-field>
+</mat-form-field>
 
   <div>
     <mat-checkbox formControlName="moviesTheaters"

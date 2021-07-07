@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { SecurityService } from '../../security/security.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -15,7 +17,7 @@ export class RatingComponent implements OnInit {
   userClick = false;
   previousRating;
 
-  constructor() { }
+  constructor(private securityService: SecurityService) { }
 
   ngOnInit(): void {
     this.maxStars = Array(this.maxRating).fill(0);
@@ -34,9 +36,13 @@ export class RatingComponent implements OnInit {
   }
 
   handlerRate(index: number): void {
-    this.ratingSelected  = index + 1;
-    this.userClick = true;
-    this.previousRating = this.ratingSelected;
-    this.eventRated.emit(this.ratingSelected);
+    if (this.securityService.isLoggedIn()) {
+      this.ratingSelected  = index + 1;
+      this.userClick = true;
+      this.previousRating = this.ratingSelected;
+      this.eventRated.emit(this.ratingSelected);
+    } else {
+      Swal.fire('Debe iniciar sesión', 'No puede realizar esta acción', 'error');
+    }
   }
 }

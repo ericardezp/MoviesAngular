@@ -12,6 +12,8 @@ export interface MovieModelDTO {
   genres: GenreDto[];
   actors: ActorMovieDto[];
   cinemas: CinemaModelDTO[];
+  userScore: number;
+  averageScore: number;
 }
 
 export interface MovieCreateDTO {

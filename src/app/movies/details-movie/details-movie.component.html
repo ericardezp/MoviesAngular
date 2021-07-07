@@ -11,7 +11,12 @@
         {{ item.genreName }}
       </mat-chip>
     </mat-chip-list>
-    | {{ releaseDate.toDateString() }} | Promedio: 0.0 | Tu voto: 0.0
+    | {{ releaseDate.toDateString() }} | Promedio: {{ movie.averageScore }} | Tu
+    voto:
+    <app-rating
+      (eventRated)="rated($event)"
+      [ratingSelected]="movie.userScore"
+    ></app-rating>
     <div style="display: flex">
       <span style="display: inline-block; margin-right: 1rem">
         <img [src]="movie.poster" style="width: 225px; height: 315px" />
@@ -49,7 +54,10 @@
       </div>
     </div>
   </div>
-  <div style="padding-left: 1rem; position: relative; width: 100%;" *ngIf="coordinate.length > 0">
+  <div
+    style="padding-left: 1rem; position: relative; width: 100%"
+    *ngIf="coordinate.length > 0"
+  >
     <h2>Exhibiéndose en los siguiente cines</h2>
     <app-map [initialCoodinates]="coordinate" [readOnly]="true"></app-map>
   </div>

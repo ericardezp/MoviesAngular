@@ -13,8 +13,7 @@ import { MatTable } from '@angular/material/table';
 export class GenreIndexComponent implements OnInit {
   constructor(private genresService: GenresService) {}
 
-  @ViewChild('table')
-  table: MatTable<any>;
+  @ViewChild('table') table: MatTable<any>;
 
   genres: GenreDto[];
   columnsToShow = ['id', 'genreName', 'actions'];

@@ -17,6 +17,7 @@ import { DetailsMovieComponent } from './movies/details-movie/details-movie.comp
 import { AuthGuard } from './auth-guard.service';
 import { LoginComponent } from './security/login/login.component';
 import { RegisterComponent } from './security/register/register.component';
+import { IndexUserComponent } from './security/index-user/index-user.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'peliculas/:id', component: DetailsMovieComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
+  { path: 'usuarios', component: IndexUserComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: '' }
 ];
 

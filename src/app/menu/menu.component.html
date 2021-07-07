@@ -17,6 +17,7 @@
       <div><a mat-button routerLink="actores">Actores</a></div>
       <div><a mat-button routerLink="cines">Cines</a></div>
       <div><a mat-button routerLink="peliculas/crear">Crear Película</a></div>
+      <div><a mat-button routerLink="usuarios">Usuarios</a></div>
     </ng-container>
   </app-authorization>
 
@@ -24,8 +25,8 @@
 
   <app-authorization>
     <ng-container authorized>
-      <span>Hola, </span>
-      <a mat-button>Cerrar Sesión</a>
+      <span>Hola, {{securityService.getItemToken('email')}} </span>
+      <a mat-button (click)="securityService.logoutUser()">Cerrar Sesión</a>
     </ng-container>
     <ng-container unauthorized>
       <a mat-button routerLink="login">Iniciar Sesión</a>

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://localhost:44331/api/'
+  apiUrl: 'https://servicesapi20210706200829.azurewebsites.net/api/'
 };
 
 /*
